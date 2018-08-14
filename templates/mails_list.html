@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/router.css">
+    <title>Folder {{maildir_folder}}</title>
+  </head>
+  <body>
+    <table>
+      {% for message in messages %}
+      <tr>
+        <th>{{ message['From'] }}</th>
+        <th><a href="/mail/{{maildir_folder}}/{{ message['file_name'] }}">{{ message['Subject'] }}</a></th>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

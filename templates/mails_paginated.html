@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/router.css">
+    <title>Folder {{maildir_folder}}</title>
+  </head>
+  <body>
+    <table>
+      {% for message in messages %}
+      <tr>
+        <th>{{ message['From'] }}</th>
+        <th><a href="/mail/{{maildir_folder}}/{{ message['file_name'] }}">{{ message['Subject'] }}</a></th>
+      </tr>
+      {% endfor %}
+    </table>
+{% macro render_pagination(pagination) %}
+  <div class=pagination>
+  {%- for page in pagination.iter_pages() %}
+    {% if page %}
+      {% if page != pagination.page %}
+        <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
+      {% else %}
+        <strong>{{ page }}</strong>
+      {% endif %}
+    {% else %}
+      <span class=ellipsis>…</span>
+    {% endif %}
+  {%- endfor %}
+  {% if pagination.has_next %}
+    <a href="{{ url_for_other_page(pagination.page + 1)
+      }}">Next &raquo;</a>
+  {% endif %}
+  </div>
+{% endmacro %}
+  </body>
+</html>

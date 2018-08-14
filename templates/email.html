@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/router.css">
+    <title>E-mail</title>
+  </head>
+  <body>
+    <table>
+      <tr><th>{{ headers['From'] }}</th></tr>
+      <tr><th>{{ headers['To'] }}</th></tr>
+    </table>
+    <pre>
+      {{ body }}
+    </pre>
+  </body>
+</html>
