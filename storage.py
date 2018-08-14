@@ -2,7 +2,7 @@ import psycopg2 as sql
 
 
 def db_connect(pg_database):
-    with open('passwords') as fh:
+    with open('../passwords') as fh:
         credentials = [line.strip().split(':') for line in fh.readlines()]
     pg_user = credentials['pg_user']
     pg_pass = credentials['pg_pass']
