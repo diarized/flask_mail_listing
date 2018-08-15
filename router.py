@@ -56,11 +56,7 @@ class MailFolder(mailbox.Maildir):
 PER_PAGE = 20
 
 
-@app.route('/mail/')
-def inbox():
-    list_folder_emails('INBOX', 1)
-
-
+@app.route('/mail/', defaults={'folder': 'INBOX', 'page': 1})
 @app.route('/mail/<string:folder>/', defaults={'page': 1})
 @app.route('/mail/<string:folder>/<int:page>')
 def list_folder_emails(folder, page):
